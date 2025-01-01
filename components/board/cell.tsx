@@ -63,8 +63,8 @@ export const Cell = ({ cellPosition, clueNumber, character }: CellProps) => {
       <input
         className="w-full h-full text-center bg-transparent"
         value={character}
-        onChange={(e: any) => {
-          const char = e.target.value.toUpperCase()
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          const char = e.target.value.toUpperCase() as Char
           if (!isFilledCell(char)) {
             handleCellValueChange(cellPosition, char)
           }

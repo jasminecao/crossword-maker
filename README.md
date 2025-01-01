@@ -27,4 +27,4 @@ styling
 [] light/dark mode
 [x] style link sharing
 [x] fix clue number positions
-[] make responsive
+[] make layout responsive
