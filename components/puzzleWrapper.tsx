@@ -15,7 +15,7 @@ export const PuzzleWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <div className={`${courier.className} ${geistSans.variable} antialiased`}>
       <div className="flex sm:h-screen sm:w-screen justify-center content-center">
-        <div className="p-2 my-auto h-full w-full sm:h-1/2 sm:w-2/3">
+        <div className="flex flex-col p-2 my-auto h-full w-full sm:w-2/3">
           {children}
         </div>
       </div>

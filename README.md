@@ -13,14 +13,15 @@ TODO list
   - [] fix highlighting
   - [] click clue to highlight row
   - [] display active clue on top?
-[] game mode
+[x] game mode
   - [x] decode from link
   - [x] render game info
-  - [] win condition
-  - [] win screen
+  - [x] timer?
+  - [x] win condition
+  - [x] win screen
 [x] link to share
   - [] error conditions
-[] back link to create (if in game mode)
+[x] back link to create (if in game mode)
 [] instructions on bottom left
 [] multiple dimensions
 

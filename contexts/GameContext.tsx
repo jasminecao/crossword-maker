@@ -24,7 +24,7 @@ export const GameContext = createContext<{
   setDirection: (direction: Direction) => void
   clues: ClueListType
   setClues: (clues: ClueListType) => void
-  gridAnswer?: Grid
+  solution?: Grid
 }>({
   mode: GameMode.PLAY,
   grid: DEFAULT_GRID,
@@ -39,11 +39,11 @@ export const GameContext = createContext<{
 
 export const GameProvider: React.FC<{
   mode: GameMode
-  gridAnswer?: Grid
+  solution?: Grid
   clueInput?: ClueListType
   children: React.ReactNode
-}> = ({ mode, gridAnswer, clueInput, children }) => {
-  const filledGrid = gridAnswer?.map((row) =>
+}> = ({ mode, solution, clueInput, children }) => {
+  const filledGrid = solution?.map((row) =>
     row.map((cell) => (cell === '.' ? '.' : ''))
   )
   const [grid, setGrid] = useState<Grid>(filledGrid || DEFAULT_GRID)
@@ -70,7 +70,7 @@ export const GameProvider: React.FC<{
         setDirection,
         clues,
         setClues,
-        gridAnswer,
+        solution,
       }}
     >
       {children}
