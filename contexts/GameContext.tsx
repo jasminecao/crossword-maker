@@ -4,19 +4,28 @@ import {
   DEFAULT_GRID,
   DEFAULT_POSITION,
 } from '@/constants'
-import { Char, ClueList, Direction, Grid, Position } from '@/types'
+import {
+  Char,
+  ClueListType,
+  Direction,
+  GameMode,
+  Grid,
+  Position,
+} from '@/types'
 import { createContext, useContext, useState } from 'react'
 
 export const GameContext = createContext<{
+  mode: GameMode
   grid: Grid
   setGridCell: (cellPosition: Position, newChar: Char) => void
   activeCell: Position
   setActiveCell: (position: Position) => void
   direction: Direction
   setDirection: (direction: Direction) => void
-  clues: ClueList
-  setClues: (clues: ClueList) => void
+  clues: ClueListType
+  setClues: (clues: ClueListType) => void
 }>({
+  mode: GameMode.PLAY,
   grid: DEFAULT_GRID,
   setGridCell: () => {},
   activeCell: DEFAULT_POSITION,
@@ -27,13 +36,16 @@ export const GameContext = createContext<{
   setClues: () => {},
 })
 
-export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [grid, setGrid] = useState<Grid>(DEFAULT_GRID)
+export const GameProvider: React.FC<{
+  mode: GameMode
+  gridInput?: Grid
+  clueInput?: ClueListType
+  children: React.ReactNode
+}> = ({ mode, gridInput, clueInput, children }) => {
+  const [grid, setGrid] = useState<Grid>(gridInput || DEFAULT_GRID)
   const [activeCell, setActiveCell] = useState<Position>(DEFAULT_POSITION)
   const [direction, setDirection] = useState<Direction>(DEFAULT_DIRECTION)
-  const [clues, setClues] = useState<ClueList>(DEFAULT_CLUES)
+  const [clues, setClues] = useState<ClueListType>(clueInput || DEFAULT_CLUES)
 
   const setGridCell = (cellPosition: Position, newChar: Char) => {
     const { row, col } = cellPosition
@@ -45,6 +57,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <GameContext.Provider
       value={{
+        mode,
         grid,
         setGridCell,
         activeCell,

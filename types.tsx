@@ -48,4 +48,9 @@ export enum ClueDirection {
   DOWN = 'DOWN',
 }
 
-export type ClueList = Record<ClueDirection, Record<number, string>>
+export type ClueListType = Record<ClueDirection, Record<number, string>>
+
+export enum GameMode {
+  PLAY = 'PLAY',
+  EDIT = 'EDIT',
+}

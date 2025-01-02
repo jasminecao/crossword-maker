@@ -1,6 +1,18 @@
+import { Puzzle } from '@/components/puzzle'
+import { parseLink } from '@/hooks/useLinkGenerator'
+import { GameMode } from '@/types'
 import { useRouter } from 'next/router'
 
-export default function Page() {
+const ErrorText = () => <p>uh oh, something went wrong :/ </p>
+
+export default function Game() {
   const router = useRouter()
-  return <p>Route: {router.query.game}</p>
+  const gameString = router.query.game as string
+  const { grid, clues } = parseLink(gameString)
+
+  return grid ? (
+    <Puzzle grid={grid} clues={clues} mode={GameMode.PLAY} />
+  ) : (
+    <ErrorText />
+  )
 }
