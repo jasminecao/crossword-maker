@@ -9,6 +9,7 @@ import { PuzzleWrapper } from './puzzleWrapper'
 import { ClueListType, GameMode, Grid } from '@/types'
 import { HomeLink } from './info/homeLink'
 import { WinModal } from './win/winModal'
+import { ActiveClue } from './clues/activeClue'
 
 interface PuzzleProps {
   solution?: Grid
@@ -21,10 +22,9 @@ export const Puzzle = ({ solution, clues, mode }: PuzzleProps) => {
     <GameProvider solution={solution} clueInput={clues} mode={mode}>
       <PuzzleWrapper>
         <div className="my-auto sm:h-2/3">
+          <ActiveClue />
           <div className="sm:flex h-full">
-            <div className="w-full sm:w-[33vw] sm:h-[33vw] mb-2">
-              <Board />
-            </div>
+            <Board />
             <div
               className="w-full h-full sm:w-[33vw] sm:h-[33vw] flex flex-col justify-between
 "

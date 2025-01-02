@@ -1,8 +1,13 @@
 import { useGameContext } from '@/contexts/GameContext'
 import { ClueItem } from './clueItem'
-import { ClueDirection, Direction } from '@/types'
+import { ClueDirection } from '@/types'
 import { useClues } from '@/hooks/useClues'
-import { isActiveRowCol, posToString, stringToPos } from '@/utils'
+import {
+  dirToClueDirection,
+  isActiveRowCol,
+  posToString,
+  stringToPos,
+} from '@/utils'
 
 const headings = {
   [ClueDirection.ACROSS]: 'ACROSS',
@@ -60,8 +65,3 @@ export const ClueList = () => {
     </div>
   )
 }
-
-const dirToClueDirection = (direction: string): ClueDirection =>
-  direction === Direction.UP || direction === Direction.DOWN
-    ? ClueDirection.DOWN
-    : ClueDirection.ACROSS

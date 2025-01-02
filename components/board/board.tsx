@@ -38,19 +38,21 @@ const Board = () => {
   const [cluePositions] = useClues(grid)
 
   return (
-    <div className={`w-full h-full`} ref={puzzleRef}>
-      {[...grid].map((rowVal, row) => (
-        <div className="flex w-full h-[20vw] sm:h-1/5" key={row}>
-          {[...rowVal].map((colVal, col) => (
-            <Cell
-              cellPosition={{ row, col }}
-              clueNumber={cluePositions.indexOf(posToString({ row, col }))}
-              character={colVal}
-              key={posToString({ row, col })}
-            />
-          ))}
-        </div>
-      ))}
+    <div className="w-full sm:w-[33vw] sm:h-[33vw] mb-2">
+      <div className={`w-full h-full`} ref={puzzleRef}>
+        {[...grid].map((rowVal, row) => (
+          <div className="flex w-full h-[20vw] sm:h-1/5" key={row}>
+            {[...rowVal].map((colVal, col) => (
+              <Cell
+                cellPosition={{ row, col }}
+                clueNumber={cluePositions.indexOf(posToString({ row, col }))}
+                character={colVal}
+                key={posToString({ row, col })}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

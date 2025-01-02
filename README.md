@@ -11,8 +11,7 @@ TODO list
 [x] figure out tiny numbers
 [x] clues
   - [] fix highlighting
-  - [] click clue to highlight row
-  - [] display active clue on top?
+  - [x] display active clue on top
 [x] game mode
   - [x] decode from link
   - [x] render game info
@@ -20,8 +19,8 @@ TODO list
   - [x] win condition
   - [x] win screen
 [x] link to share
-  - [] error conditions
 [x] back link to create (if in game mode)
+[] share link error checking
 [] instructions on bottom left
 [] multiple dimensions
 

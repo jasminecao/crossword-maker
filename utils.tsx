@@ -1,5 +1,5 @@
 import { NUM_ROWS } from './constants'
-import { Position, Direction } from './types'
+import { Position, Direction, ClueDirection } from './types'
 
 export const getNextPosition = (
   { row, col }: Position,
@@ -54,3 +54,8 @@ export const isActiveRowCol = (
 
   return col === activeCol
 }
+
+export const dirToClueDirection = (direction: string): ClueDirection =>
+  direction === Direction.UP || direction === Direction.DOWN
+    ? ClueDirection.DOWN
+    : ClueDirection.ACROSS

@@ -32,7 +32,11 @@ export const ClueItem = ({
       <textarea
         name="clueItem"
         rows={2}
-        className={`ml-2 w-full pl-1 ${bgColor} rounded hover:bg-slate-100 focus:outline-none`}
+        className={`ml-2 w-full pl-1 ${bgColor} rounded ${
+          mode === GameMode.EDIT && 'hover:bg-slate-100'
+        } focus:outline-none ${
+          mode === GameMode.PLAY ? 'cursor-default' : 'cursor-auto'
+        }`}
         onChange={(e) => {
           setClues({
             ...clues,

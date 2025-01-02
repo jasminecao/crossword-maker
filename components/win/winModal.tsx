@@ -27,8 +27,8 @@ export const WinModal = () => {
             <Image
               src="/hamster-yay.png"
               alt="hamster-yay"
-              width={50}
-              height={50}
+              width={40}
+              height={40}
             />
             <p className="flex-end ml-2">
               wahoo! you&apos;re a smart cookie :)
