@@ -51,7 +51,8 @@ export const ClueList = () => {
                     ) &&
                     clueDirections[index].includes(
                       dirToClueDirection(direction)
-                    )
+                    ) &&
+                    dirToClueDirection(direction) === clueDirection
                   }
                   shouldHighlightPartial={
                     cluePositions[index] === posToString(activeCell)

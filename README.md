@@ -10,7 +10,7 @@ TODO list
 [x] period key to fill square
 [x] figure out tiny numbers
 [x] clues
-  - [] fix highlighting
+  - [x] fix highlighting
   - [x] display active clue on top
 [x] game mode
   - [x] decode from link
