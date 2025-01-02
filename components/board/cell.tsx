@@ -1,4 +1,4 @@
-import { BACKGROUND_COLOR, LIGHT_BACKGROUND_COLOR } from '@/constants'
+import { LIGHT_BACKGROUND_COLOR } from '@/constants'
 import { useGameContext } from '@/contexts/GameContext'
 import { useInputFocus } from '@/hooks/useInputFocus'
 import { Char, Position } from '@/types'
