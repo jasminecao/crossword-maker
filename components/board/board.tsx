@@ -1,4 +1,3 @@
-import { NUM_ROWS } from '@/constants'
 import { useGameContext } from '@/contexts/GameContext'
 import { useKeyHandler } from '@/hooks/useKeyHandler'
 import { Position } from '@/types'
