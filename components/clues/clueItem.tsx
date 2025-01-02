@@ -47,7 +47,7 @@ export const ClueItem = ({
           })
         }}
         style={{ resize: 'none' }}
-        value={clue && encodeURIComponent(clue)}
+        value={`${clue}`}
         readOnly={mode === GameMode.PLAY}
       />
     </div>
