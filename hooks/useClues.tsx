@@ -51,13 +51,9 @@ export const shouldSetClueNumber = (
   }
 
   if (direction === ClueDirection.ACROSS) {
-    if (col === 0) {
-      return true
-    }
-
     // check left condition
     if (
-      isFilledCell(grid[row][col - 1]) &&
+      (col - 1 < 0 || isFilledCell(grid[row][col - 1])) &&
       col < NUM_ROWS - 1 &&
       !isFilledCell(grid[row][col + 1])
     ) {
@@ -66,12 +62,9 @@ export const shouldSetClueNumber = (
   }
 
   if (direction === ClueDirection.DOWN) {
-    if (row === 0) {
-      return true
-    }
     // check above condition
     if (
-      isFilledCell(grid[row - 1][col]) &&
+      (row - 1 < 0 || isFilledCell(grid[row - 1][col])) &&
       row < NUM_ROWS - 1 &&
       !isFilledCell(grid[row + 1][col])
     ) {
