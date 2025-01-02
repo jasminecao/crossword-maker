@@ -8,7 +8,7 @@ export const ShareModal = ({
   setShowModal: (showModal: boolean) => void
 }) => {
   const link = useLinkGenerator()
-  const absolutePath = window.location.origin + '/' + link
+  const absolutePath = window.location.origin + '/game/' + link
   const [hideCopyIcon, setHideCopyIcon] = useState(false)
   const [showCheckIcon, setShowCheckIcon] = useState(false)
 

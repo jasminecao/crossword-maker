@@ -12,6 +12,7 @@ TODO list
 [x] clues
   - [] fix highlighting
   - [] click clue to highlight row
+  - [] display active clue on top?
 [] game mode
   - [] decode from link
   - [] render game info

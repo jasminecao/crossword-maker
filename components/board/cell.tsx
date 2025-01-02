@@ -61,7 +61,7 @@ export const Cell = ({ cellPosition, clueNumber, character }: CellProps) => {
         <div className="text-xs float-left m-1 absolute">{clueNumber + 1}</div>
       )}
       <input
-        className="w-full text-center bg-transparent"
+        className="w-full h-full text-center bg-transparent"
         value={character}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const char = e.target.value.toUpperCase() as Char

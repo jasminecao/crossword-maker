@@ -28,7 +28,7 @@ export const ClueList = () => {
   const [cluePositions, clueDirections] = useClues(grid)
 
   return (
-    <div className="sm:flex w-full">
+    <div className="sm:flex w-full mb-2">
       {[ClueDirection.ACROSS, ClueDirection.DOWN].map((clueDirection) => (
         <ColumnWrapper heading={headings[clueDirection]} key={clueDirection}>
           {clueDirections.map(
