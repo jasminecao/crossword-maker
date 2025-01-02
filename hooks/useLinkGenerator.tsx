@@ -1,7 +1,6 @@
 import { NUM_ROWS } from '@/constants'
 import { useGameContext } from '@/contexts/GameContext'
 import { Char, ClueListType } from '@/types'
-import { Buffer } from 'buffer'
 import LZString from 'lz-string'
 
 const gameToString = (grid: Char[][], clues: any): string => {
