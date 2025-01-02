@@ -13,7 +13,7 @@ const validateGameFilled = (grid: Grid, clues: ClueListType) => {
   return gridFilled && cluesFilled
 }
 
-const ErrorText = () => <p>uh oh, your board isn't filled yet :/ </p>
+const ErrorText = () => <p>uh oh, your board isn&apos;t filled yet :/ </p>
 
 export const ShareModal = ({
   setShowModal,
