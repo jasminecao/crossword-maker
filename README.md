@@ -21,6 +21,7 @@ TODO list
   - [] error conditions
 [] back link to create (if in game mode)
 [] instructions on bottom left
+[] multiple dimensions
 
 styling
 [x] set font family

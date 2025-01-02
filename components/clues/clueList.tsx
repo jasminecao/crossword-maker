@@ -16,7 +16,7 @@ const ColumnWrapper = ({
   heading: string
   children: React.ReactNode
 }) => (
-  <div className="ml-4 flex flex-col w-50">
+  <div className="sm:ml-4 flex flex-col sm:w-50">
     <h2 className="font-medium">{heading}</h2>
     <div className="border-b border mb-2" />
     {children}
@@ -28,7 +28,7 @@ export const ClueList = () => {
   const [cluePositions, clueDirections] = useClues(grid)
 
   return (
-    <div className="flex w-full">
+    <div className="sm:flex w-full">
       {[ClueDirection.ACROSS, ClueDirection.DOWN].map((clueDirection) => (
         <ColumnWrapper heading={headings[clueDirection]} key={clueDirection}>
           {clueDirections.map(

@@ -54,14 +54,14 @@ export const Cell = ({ cellPosition, clueNumber, character }: CellProps) => {
 
   return (
     <div
-      className={`w-1/5 h-100 ${backgroundColor} border text-center font-sans font-bold`}
+      className={`sm:w-1/5 sm:h-full ${backgroundColor} border text-center font-sans font-bold`}
     >
       {/* add one to clueNumber due to 0-index */}
       {clueNumber !== -1 && (
         <div className="text-xs float-left m-1 absolute">{clueNumber + 1}</div>
       )}
       <input
-        className="w-full h-full text-center bg-transparent"
+        className="w-full text-center bg-transparent"
         value={character}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const char = e.target.value.toUpperCase() as Char

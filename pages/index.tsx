@@ -14,8 +14,8 @@ const courier = Courier_Prime({
 export default function Home() {
   return (
     <div className={`${courier.className} ${geistSans.variable} antialiased`}>
-      <div className="flex h-screen w-screen justify-center content-center">
-        <div className="my-auto h-1/2 w-2/3 min-h-[200px] min-w-[200px]">
+      <div className="flex sm:h-screen sm:w-screen justify-center content-center">
+        <div className="p-2 my-auto h-full w-full sm:h-1/2 sm:w-2/3">
           <Puzzle />
         </div>
       </div>
