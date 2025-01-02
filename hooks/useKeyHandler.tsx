@@ -1,6 +1,7 @@
 import { getNextPosition } from '@/utils'
 import { Direction, Position } from '@/types'
 import { RefObject, useEffect } from 'react'
+import { VERTICAL_DIRECTIONS } from '@/constants'
 
 const directionKeyMap: Record<string, Direction> = {
   ArrowUp: Direction.UP,
@@ -24,6 +25,12 @@ export const useKeyHandler = (
         switch (event.key) {
           case '.':
             toggleFill(position)
+            break
+          case 'Enter':
+            const oppositeDir = VERTICAL_DIRECTIONS.includes(direction)
+              ? Direction.RIGHT
+              : Direction.DOWN
+            setDirection(oppositeDir)
             break
           case 'ArrowUp':
           case 'ArrowDown':

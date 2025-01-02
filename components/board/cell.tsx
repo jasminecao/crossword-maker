@@ -75,6 +75,7 @@ export const Cell = ({ cellPosition, clueNumber, character }: CellProps) => {
         }}
         maxLength={1}
         ref={inputRef}
+        readOnly={isFilledCell(character)}
       />
     </div>
   )

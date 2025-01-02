@@ -3,7 +3,8 @@ TODO list
 [x] key listener
   - [x] only focus keylistener on puzzle
 [] backspace key?
-[] double click to toggle fill
+[x] enter to switch direction
+[x] prevent typing when filled
 [x] autofocus on next position (up/down/left/right)
 [x] set direction
 [x] period key to fill square
