@@ -1,7 +1,6 @@
 import { NUM_ROWS } from '@/constants'
 import { useGameContext } from '@/contexts/GameContext'
 import { Char, ClueListType } from '@/types'
-import LZString from 'lz-string'
 
 const gameToString = (grid: Char[][], clues: any): string => {
   let gameString = ''
@@ -27,16 +26,13 @@ const gameToString = (grid: Char[][], clues: any): string => {
 export const useLinkGenerator = (): string => {
   const { grid, clues } = useGameContext()
   const gameString = gameToString(grid, clues)
-  const compressedString = LZString.compress(gameString)
-  // return Buffer.from(compressedString).toString('base64')
-  return compressedString
+  return Buffer.from(gameString).toString('base64')
 }
 
 export const parseLink = (
   str: string
 ): { grid?: Char[][]; clues?: ClueListType } => {
-  // const gridText = str && Buffer.from(str, 'base64').toString('ascii')
-  const gridText = str && LZString.decompress(str)
+  const gridText = str && Buffer.from(str, 'base64').toString('ascii')
   if (!gridText) {
     return {}
   }
