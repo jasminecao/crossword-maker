@@ -1,16 +1,77 @@
+import { useGameContext } from '@/contexts/GameContext'
 import { useLinkGenerator } from '@/hooks/useLinkGenerator'
+import { ClueDirection, ClueListType, Grid } from '@/types'
 import { useState } from 'react'
 import { LuCopy, LuCircleCheck, LuX } from 'react-icons/lu'
+
+const validateGameFilled = (grid: Grid, clues: ClueListType) => {
+  const gridFilled = grid.every((row) => row.every((cell) => cell !== ''))
+  const cluesFilled =
+    Object.values(clues[ClueDirection.ACROSS]).every((clue) => clue !== '') &&
+    Object.values(clues[ClueDirection.DOWN]).every((clue) => clue !== '')
+
+  return gridFilled && cluesFilled
+}
+
+const ErrorText = () => <p>uh oh, your board isn't filled yet :/ </p>
 
 export const ShareModal = ({
   setShowModal,
 }: {
   setShowModal: (showModal: boolean) => void
 }) => {
+  const { grid, clues } = useGameContext()
   const link = useLinkGenerator()
   const absolutePath = window.location.origin + '/game/' + link
   const [hideCopyIcon, setHideCopyIcon] = useState(false)
   const [showCheckIcon, setShowCheckIcon] = useState(false)
+  const isGameFilled = validateGameFilled(grid, clues)
+
+  const ShareContent = () => (
+    <>
+      <p className="text-base text-gray-900" id="modal-title">
+        share the link below &#128522;
+      </p>
+      <div className="mt-2 flex items-center">
+        <input
+          id="clone-with-https"
+          type="text"
+          className="bg-gray-100 w-full p-2 rounded outline-none"
+          data-autoselect="true"
+          readOnly={true}
+          value={absolutePath}
+        />
+        {showCheckIcon ? (
+          <LuCircleCheck
+            size={20}
+            className={`ml-2 justify-center items-center cursor-pointer transition ease-in-out delay-150 ${
+              showCheckIcon ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        ) : (
+          <LuCopy
+            size={20}
+            className={`ml-2 justify-center items-center cursor-pointer hover:bg-slate-100 hover:scale-110
+      transition-opacity 
+      duration-300
+      ease-out ${hideCopyIcon ? 'opacity-0' : 'opacity-100'}`}
+            onClick={async () => {
+              try {
+                await navigator.clipboard.writeText(absolutePath)
+              } catch (err) {
+                console.error('Failed to copy: ', err)
+              }
+
+              setHideCopyIcon(true)
+              setTimeout(() => setShowCheckIcon(true), 500)
+              setTimeout(() => setHideCopyIcon(false), 500)
+              setTimeout(() => setShowCheckIcon(false), 1500)
+            }}
+          />
+        )}
+      </div>
+    </>
+  )
 
   return (
     <div
@@ -33,47 +94,7 @@ export const ShareModal = ({
                   className="cursor-pointer hover:scale-100 hover:bg-slate-100"
                 />
               </div>
-              <p className="text-base text-gray-900" id="modal-title">
-                share the link below &#128522;
-              </p>
-              <div className="mt-2 flex items-center">
-                <input
-                  id="clone-with-https"
-                  type="text"
-                  className="bg-gray-100 w-full p-2 rounded outline-none"
-                  data-autoselect="true"
-                  readOnly={true}
-                  value={absolutePath}
-                />
-                {showCheckIcon ? (
-                  <LuCircleCheck
-                    size={20}
-                    className={`ml-2 justify-center items-center cursor-pointer transition ease-in-out delay-150 ${
-                      showCheckIcon ? 'opacity-100' : 'opacity-0'
-                    }`}
-                  />
-                ) : (
-                  <LuCopy
-                    size={20}
-                    className={`ml-2 justify-center items-center cursor-pointer hover:bg-slate-100 hover:scale-110
-                        transition-opacity 
-                        duration-300
-                        ease-out ${hideCopyIcon ? 'opacity-0' : 'opacity-100'}`}
-                    onClick={async () => {
-                      try {
-                        await navigator.clipboard.writeText(absolutePath)
-                      } catch (err) {
-                        console.error('Failed to copy: ', err)
-                      }
-
-                      setHideCopyIcon(true)
-                      setTimeout(() => setShowCheckIcon(true), 500)
-                      setTimeout(() => setHideCopyIcon(false), 500)
-                      setTimeout(() => setShowCheckIcon(false), 1500)
-                    }}
-                  />
-                )}
-              </div>
+              {isGameFilled ? <ShareContent /> : <ErrorText />}
             </div>
           </div>
         </div>

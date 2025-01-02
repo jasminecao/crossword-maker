@@ -20,7 +20,7 @@ TODO list
   - [x] win screen
 [x] link to share
 [x] back link to create (if in game mode)
-[] share link error checking
+[x] share link error checking
 [] instructions on bottom left
 [] multiple dimensions
 

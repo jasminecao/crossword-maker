@@ -46,7 +46,7 @@ export const Cell = ({ cellPosition, clueNumber, character }: CellProps) => {
     backgroundColor = `bg-${LIGHT_BACKGROUND_COLOR}`
   }
   if (isActiveCell) {
-    backgroundColor = `bg-${BACKGROUND_COLOR}`
+    backgroundColor = `bg-[#f1f6e8]`
   }
   if (isFilledCell(character)) {
     backgroundColor = 'bg-black'
