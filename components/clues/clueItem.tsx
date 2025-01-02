@@ -47,7 +47,7 @@ export const ClueItem = ({
           })
         }}
         style={{ resize: 'none' }}
-        value={`${clue}`}
+        value={clue && `${clue}`}
         readOnly={mode === GameMode.PLAY}
       />
     </div>
