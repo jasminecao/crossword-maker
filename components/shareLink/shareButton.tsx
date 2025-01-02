@@ -9,7 +9,7 @@ export const ShareButton = () => {
     <div>
       {showModal && <ShareModal setShowModal={setShowModal} />}
       <button
-        className="float-right w-fit flex rounded border py-2 px-4 text-center text-sm bg-slate-100 hover:bg-accentBackground mb-4"
+        className="flex-end w-fit flex rounded border py-2 px-4 text-center text-sm bg-slate-100 hover:bg-accentBackground mb-4"
         type="button"
         onClick={() => {
           setShowModal(true)

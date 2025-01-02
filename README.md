@@ -21,7 +21,7 @@ TODO list
 [x] link to share
 [x] back link to create (if in game mode)
 [x] share link error checking
-[] instructions on bottom left
+[x] instructions on bottom left
 [] multiple dimensions
 
 styling

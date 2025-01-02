@@ -10,6 +10,7 @@ import { ClueListType, GameMode, Grid } from '@/types'
 import { HomeLink } from './info/homeLink'
 import { WinModal } from './win/winModal'
 import { ActiveClue } from './clues/activeClue'
+import { Instructions } from './info/instructions'
 
 interface PuzzleProps {
   solution?: Grid
@@ -30,8 +31,11 @@ export const Puzzle = ({ solution, clues, mode }: PuzzleProps) => {
 "
             >
               <ClueList />
-              {mode === GameMode.EDIT && <ShareButton />}
-              {mode === GameMode.PLAY && <HomeLink />}
+              <div className="flex w-full">
+                <Instructions />
+                {mode === GameMode.EDIT && <ShareButton />}
+                {mode === GameMode.PLAY && <HomeLink />}
+              </div>
             </div>
           </div>
         </div>
