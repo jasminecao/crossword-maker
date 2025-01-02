@@ -1,6 +1,6 @@
 import { LIGHT_BACKGROUND_COLOR } from '@/constants'
 import { useGameContext } from '@/contexts/GameContext'
-import { ClueDirection } from '@/types'
+import { ClueDirection, GameMode } from '@/types'
 
 interface ClueItemProps {
   number: number
@@ -17,7 +17,7 @@ export const ClueItem = ({
   shouldHighlightPartial,
   clue,
 }: ClueItemProps) => {
-  const { clues, setClues } = useGameContext()
+  const { clues, setClues, mode } = useGameContext()
 
   const bgColor = shouldHighlight
     ? `bg-${LIGHT_BACKGROUND_COLOR}`
@@ -44,6 +44,7 @@ export const ClueItem = ({
         }}
         style={{ resize: 'none' }}
         value={clue}
+        readOnly={mode === GameMode.PLAY}
       />
     </div>
   )

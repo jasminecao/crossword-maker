@@ -1,7 +1,8 @@
 import { getNextPosition } from '@/utils'
-import { Direction, Position } from '@/types'
+import { Direction, GameMode, Position } from '@/types'
 import { RefObject, useEffect } from 'react'
 import { VERTICAL_DIRECTIONS } from '@/constants'
+import { useGameContext } from '@/contexts/GameContext'
 
 const directionKeyMap: Record<string, Direction> = {
   ArrowUp: Direction.UP,
@@ -18,13 +19,16 @@ export const useKeyHandler = (
   setPosition: (position: Position) => void,
   toggleFill: (position: Position) => void
 ) => {
+  const { mode } = useGameContext()
+
   useEffect(() => {
     const handleKeyDown = (event: any) => {
       if (ref.current && ref.current.contains(event.target)) {
-        console.log('event', event)
         switch (event.key) {
           case '.':
-            toggleFill(position)
+            if (mode === GameMode.EDIT) {
+              toggleFill(position)
+            }
             break
           case 'Enter':
             const oppositeDir = VERTICAL_DIRECTIONS.includes(direction)

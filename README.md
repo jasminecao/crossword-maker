@@ -14,8 +14,8 @@ TODO list
   - [] click clue to highlight row
   - [] display active clue on top?
 [] game mode
-  - [] decode from link
-  - [] render game info
+  - [x] decode from link
+  - [x] render game info
   - [] win condition
   - [] win screen
 [x] link to share

@@ -11,7 +11,7 @@ export default function Game() {
   const { grid, clues } = parseLink(gameString)
 
   return grid ? (
-    <Puzzle grid={grid} clues={clues} mode={GameMode.PLAY} />
+    <Puzzle gridAnswer={grid} clues={clues} mode={GameMode.PLAY} />
   ) : (
     <ErrorText />
   )
