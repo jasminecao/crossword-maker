@@ -1,6 +1,7 @@
 import { NUM_ROWS } from '@/constants'
 import { useGameContext } from '@/contexts/GameContext'
 import { Char, ClueListType } from '@/types'
+import pako from 'pako'
 
 const gameToString = (grid: Char[][], clues: any): string => {
   let gameString = ''
@@ -26,16 +27,24 @@ const gameToString = (grid: Char[][], clues: any): string => {
 export const useLinkGenerator = (): string => {
   const { grid, clues } = useGameContext()
   const gameString = gameToString(grid, clues)
-  return Buffer.from(gameString).toString('base64')
+  const compressedData = pako.gzip(gameString)
+  const compressedStr = btoa(String.fromCharCode(...compressedData))
+  return encodeURIComponent(compressedStr)
 }
 
 export const parseLink = (
   str: string
 ): { grid?: Char[][]; clues?: ClueListType } => {
-  const gridText = str && Buffer.from(str, 'base64').toString('ascii')
-  if (!gridText) {
+  if (!str) {
     return {}
   }
+
+  const decodedStr = decodeURIComponent(str)
+  const fromb64 = atob(decodedStr)
+  const charData = fromb64.split('').map((x) => x.charCodeAt(0))
+  const binData = new Uint8Array(charData)
+  const compressedData = pako.inflate(binData)
+  const gridText = String.fromCharCode(...compressedData)
 
   const grid = new Array(NUM_ROWS).fill(new Array(NUM_ROWS).fill(''))
   let pos = 0
